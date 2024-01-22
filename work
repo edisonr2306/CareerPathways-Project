@@ -158,22 +158,18 @@ public class CareerPathwayProj {
 				}
 			
 			 connection.close();
-				//PRIINTJAVA PRIINTJAVAobject = new PRIINTJAVA();
-				
-				//PRIINTJAVAobject.Printjava();
-				//PrintScreen PrintScreenobject = new PrintScreen();
-				//PrintScreenobject.ParticipantInfoPrint();
-					 connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 //CONNECTION FOR CLASSES EX:
-		//	PRIINTJAVA PRIINTJAVAobject = new PRIINTJAVA();
-		
-	///	PRIINTJAVAobject.Printjava();
+
+		//	PRIINTJAVA PRIINTJAVAobject = new PRIINTJAVA()	;
+	//	PRIINTJAVAobject.Printjava();
+
+//PrintScreen PrintScreenobject = new PrintScreen();
+				//PrintScreenobject.ParticipantInfoPrint();
 
 		//PRIINTJAVA PRIINTJAVAobject = new PRIINTJAVA();
-		
 		//PRIINTJAVAobject.Printjava();
 		
 	}
