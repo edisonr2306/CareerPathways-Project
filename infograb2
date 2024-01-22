@@ -1,0 +1,43 @@
+String Environment = null, Access2int= null, intaccess= null, FinanicalMang= null, Direct= null, Bank= null, E_Email= null,ELast_Name= null, EFirst_Name= null,PEmail = null, ERelationship= null, Relationship= null, Last_Name= null,First_Name = null,State = null,City = null, Address = null, Perm_Email = null;
+		int ECell_Phone = 0, EWork_Phone = 0 ,EPhone = 0, PCell_Phone= 0,PWork_Phone = 0,Parent_Phone = 0, Zip= 0, Apt = 0, Cell_Phone = 0,Home_Phone  = 0;
+		String databaseURL = "jdbc:ucanaccess://C:\\Users\\User\\eclipse-workspace\\CareerPathways\\dbCareerPathways.accdb";
+		
+		try {
+			Connection connection = DriverManager.getConnection(databaseURL);
+			String sql = "INSERT INTO ParticipantInfo(English_Language_Learner, Learning_Disability, Allergies, Specific_Allergies, Languages_Spoken)  VALUES (? , ?, ?, ?, ?, ?, ?,? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?,  ?,  ?,  ?,  ?,  ?,)";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			System.out.println("INFO INSERTED");
+			statement.setString(21,Perm_Email);
+			statement.setInt(22,Home_Phone);
+			statement.setInt(23,Cell_Phone);
+			statement.setString(24,Address);
+			statement.setInt(25,Apt);
+			statement.setString(26,City);
+			statement.setString(27,State);
+			statement.setInt(28,Zip);
+			statement.setString(29,First_Name);
+			statement.setString(30,Last_Name);
+			statement.setString(31,Relationship);
+			statement.setString(32,PEmail);
+			statement.setInt(33,Parent_Phone);
+			statement.setInt(32,PWork_Phone);
+			statement.setInt(34,PCell_Phone);
+			statement.setString(35, EFirst_Name);
+			statement.setString(36,ELast_Name);
+			statement.setString(37,ERelationship);
+			statement.setString(38,E_Email);
+			statement.setInt(39,EPhone);
+			statement.setInt(40,EWork_Phone);
+			statement.setInt(41,ECell_Phone);
+			statement.setString(42,Bank);
+			statement.setString(43, Direct);
+			statement.setString(44,FinanicalMang);
+			statement.setString(45,intaccess);
+			statement.setString(46,Access2int);
+			statement.setString(47,Environment);
+				 connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}
