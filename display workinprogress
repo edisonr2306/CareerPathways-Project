@@ -1,0 +1,18 @@
+String databaseURL = "jdbc:ucanaccess://C:\\Users\\User\\eclipse-workspace\\CareerPathways\\dbCareerPathways.accdb";
+		Connection connection = DriverManager.getConnection(databaseURL);
+			
+			String sql  = "SELECT * FROM ParticipentInfo";
+			Statement statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+
+			while(result.next()){
+			int id = result.getInt("I");
+			 String Name = result.getString("Name");
+				 String School = result.getString("School");
+				 String Pathway = result.getString("Pathway");
+				 int Grade_Level = result.getInt("Grade_Level");
+				 int OSIS = result.getInt("OSIS");
+			 int SSN = result.getInt("SSN");
+				 String I9_Verified = result.getString("I9");
+				 
+			 System.out.println(id + ", " + Name + "," + School + "," + Pathway + " " + Grade_Level + " " + OSIS + " " + SSN + " " + I9_Verified);
