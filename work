@@ -1,0 +1,186 @@
+package StudentInfo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class CareerPathwayProj {
+
+	static Scanner allinputs = new Scanner(System.in);
+
+	public static void main(String[] args){
+		String databaseURL = "jdbc:ucanaccess://C:\\Users\\User\\eclipse-workspace\\CareerPathways\\dbCareerPathways.accdb";
+	
+		String Name = null, School = null, Pathway = null, I9_Verified = null, Gender = null, Prefpronoun = null, Prefname = null, Race = null, Exp_Month = null, Ell = null, IEP = null, Allergies = null, Specific_Allergries = null, Languages = null,Environment = null, Access2int= null, intaccess= null, FinanicalMang= null, Direct= null, Bank= null, E_Email= null, ELast_Name= null, EFirst_Name= null,PEmail, ERelationship= null, Relationship= null, Last_Name= null,First_Name = null,State = null,City = null, Address = null, Perm_Email = null, School_Email= null;
+		int Grade_Level = 0, OSIS = 0, SSN = 0,Grade =  0, Exp_Year = 0,ECell_Phone = 0, EWork_Phone = 0 ,EPhone, PCell_Phone= 0,PWork_Phone = 0,Parent_Phone, Zip= 0, Apt = 0, Cell_Phone = 0,Home_Phone  = 0 ;
+		 
+		try {
+			Connection connection = DriverManager.getConnection(databaseURL);
+			
+			System.out.println("Connected to Ms Access database.");
+			
+			System.out.println("Enter your name:");
+			Name = allinputs.nextLine();
+			System.out.println("Enter your school :");
+			School = allinputs.nextLine();
+			System.out.println("Enter your pathway:");
+			Pathway = allinputs.nextLine();
+			System.out.println("Enter your grade level:");
+			Grade_Level = allinputs.nextInt();
+			System.out.println("Enter OSIS:");
+			OSIS = allinputs.nextInt();
+			System.out.println("Enter SSN:");
+			SSN = allinputs.nextInt();
+			System.out.println("I-9 Verified:");
+			I9_Verified = allinputs.nextLine();
+			I9_Verified = allinputs.nextLine();
+			System.out.println("Personal Infomation");
+			System.out.println("Enter your Gender:");
+			Gender = allinputs.nextLine();
+			System.out.println("Preferred Pronoun:");
+			Prefpronoun = allinputs.nextLine();
+			System.out.println("Preferred Name / Nick Name:");
+			Prefname = allinputs.nextLine();
+			System.out.println("Race:");
+			Race = allinputs.nextLine();
+			System.out.println("Grade:");
+			Grade = allinputs.nextInt();
+			System.out.println("Expected Graduation Month:");
+			Exp_Month = allinputs.nextLine();
+			Exp_Month = allinputs.nextLine();
+			System.out.println("Expected Graduation Year:");
+			Exp_Year = allinputs.nextInt();
+			System.out.println("Are you an English Language Learner (ELL)?");
+			Ell = allinputs.nextLine();
+			Ell = allinputs.nextLine();
+			System.out.println("Do you identify as a student with a learning disability or do you have an Individualized Education Plan (IEP)?");
+			IEP = allinputs.nextLine();
+			System.out.println("Do you have any allergies? (Animals, foods, etc.):");
+			Allergies= allinputs.nextLine();
+			System.out.println("Please specify your allergies:");
+			Specific_Allergries = allinputs.nextLine();
+			System.out.println("Other than English, what language(s) are you most comfortable speaking? ");
+			Languages = allinputs.nextLine();
+			System.out.println("Contact Information");
+			System.out.println("School Based Email: ");
+			School_Email = allinputs.nextLine();
+			System.out.println("Permanent Email: ");
+			Perm_Email = allinputs.nextLine();
+			System.out.println("Home Phone:");
+			Home_Phone= allinputs.nextInt();
+			System.out.println("Cell Phone:");
+			Cell_Phone = allinputs.nextInt();
+			System.out.println("Address:");
+			Address = allinputs.nextLine();
+			System.out.println("Apt:");
+			Apt = allinputs.nextInt();
+			System.out.println("City");
+			City = allinputs.nextLine();
+			System.out.println("State:");
+			State = allinputs.nextLine();
+			System.out.println("Zip Code");
+			Zip = allinputs.nextInt();
+			System.out.println("Parent/Guardian Contact Information");
+			System.out.println("First Name:");
+			First_Name = allinputs.nextLine();
+			System.out.println("Last Name:");
+			Last_Name = allinputs.nextLine();
+			System.out.println("Relationship:");
+			Relationship = allinputs.nextLine();
+			System.out.println("Email:");
+			PEmail = allinputs.nextLine();
+			System.out.println("Home Phone:");
+			Parent_Phone = allinputs.nextInt();
+			System.out.println("Work Phone:");
+			PWork_Phone = allinputs.nextInt();
+			System.out.println("Cell Phone:");
+			PCell_Phone = allinputs.nextInt();
+			System.out.println("Emergency Contact Information");
+			System.out.println("First Name:");
+			EFirst_Name = allinputs.nextLine();
+			System.out.println("Last Name:");
+			ELast_Name = allinputs.nextLine();
+			System.out.println("Relationship:");
+			ERelationship = allinputs.nextLine();
+			System.out.println("Email:");
+			E_Email = allinputs.nextLine();
+			System.out.println("Home Phone:");
+			EPhone = allinputs.nextInt();
+			System.out.println("Work Phone:");
+			EWork_Phone = allinputs.nextInt();
+			System.out.println("Cell Phone:");
+			ECell_Phone = allinputs.nextInt();
+			System.out.println("Other Information");
+			System.out.println("Do You Currently have a Bank Account?");
+			Bank = allinputs.nextLine();
+			System.out.println("Would you like to be paid through Direct Deposit?");
+			Direct = allinputs.nextLine();
+			System.out.println("Have you completed the Career and Financial Management Course in your school?");
+			FinanicalMang = allinputs.nextLine();
+			System.out.println("Do you have access to an electronic device with internet accessibility?");
+			intaccess = allinputs.nextLine();
+			System.out.println("Do you have access to the internet?");
+			Access2int = allinputs.nextLine();
+			System.out.println("What internship environment are you looking for?");
+			Environment = allinputs.nextLine();
+			
+			String sql = "INSERT INTO ParticipantInfo(Name, School, Pathway, Grade_Level, OSIS, SSN, I9_Verified, Gender, Preferred_Pronoun, Preferred_Name, Race, Grade, Expected_Graduation_Month, Expected_Graduation_Year, English_Language_Learner, Learning_Disability, Allergies, Specific_Allergies, Languages_Spoken)  VALUES (? , ?, ?, ?, ?, ?, ?,? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			
+			statement.setString(1, Name);
+			statement.setString(2, School);
+			statement.setString(3, Pathway);
+			statement.setInt(4, Grade_Level);
+			statement.setInt(5, OSIS);
+			statement.setInt(6, SSN);
+			statement.setString(7, I9_Verified);
+			statement.setString(8, Gender);
+			statement.setString(9, Prefpronoun);
+			statement.setString(10, Prefname);
+			statement.setString(11, Race);
+			statement.setInt(12, Grade);
+			statement.setString(13, Exp_Month);
+			statement.setInt(14, Exp_Year);
+			statement.setString(15, Ell);
+			statement.setString(16, IEP);
+			statement.setString(17, Allergies);
+			statement.setString(18, Specific_Allergries);
+			statement.setString(19, Languages);
+			
+			int rows = statement.executeUpdate();
+			if (rows >0) {
+				System.out.println("INFO INSERTED");
+				}
+			
+			 connection.close();
+				//PRIINTJAVA PRIINTJAVAobject = new PRIINTJAVA();
+				
+				//PRIINTJAVAobject.Printjava();
+				//PrintScreen PrintScreenobject = new PrintScreen();
+				//PrintScreenobject.ParticipantInfoPrint();
+					 connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+//CONNECTION FOR CLASSES EX:
+		//	PRIINTJAVA PRIINTJAVAobject = new PRIINTJAVA();
+		
+	///	PRIINTJAVAobject.Printjava();
+
+		//PRIINTJAVA PRIINTJAVAobject = new PRIINTJAVA();
+		
+		//PRIINTJAVAobject.Printjava();
+		
+	}
+
+	
+}
+
+
+
+	 
