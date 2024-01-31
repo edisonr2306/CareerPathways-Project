@@ -1,0 +1,40 @@
+package Pathways;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class chrisybird {
+
+	static Scanner allinputs = new Scanner(System.in);
+	public static void chrisybirdjr() {
+		String 1;
+		
+		String databaseURL = "jdbc:ucanaccess://dbCareerPathways.accdb";
+		try {
+			Connection connect = DriverManager.getConnection(databaseURL);
+			System.out.println("Contact Information");
+			System.out.println("School Based Email: ");
+			School_Email = allinputs.nextLine();
+			System.out.println("Permanent Email: ");
+			Perm_Email = allinputs.nextLine();
+			System.out.println("Home Phone:");
+			Home_Phone= allinputs.nextInt();
+			System.out.println("Cell Phone:");
+			Cell_Phone = allinputs.nextInt();
+			System.out.println("Address:");
+			Address = allinputs.nextLine();
+			System.out.println("Apt:");
+			Apt = allinputs.nextInt();
+			System.out.println("City");
+			City = allinputs.nextLine();
+			System.out.println("State:");
+			State = allinputs.nextLine();
+			System.out.println("Zip Code");
+			Zip = allinputs.nextInt();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}	
+}
