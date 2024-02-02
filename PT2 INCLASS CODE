@@ -1,18 +1,21 @@
 package Pathways;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class chrisybird {
 
+	static Melbird Mel = new Melbird();
 	static Scanner allinputs = new Scanner(System.in);
 	public static void chrisybirdjr() {
-		String 1;
+		String  Perm_Email = null, School_Email= null, Address = null, City = null, State = null;
+		int Home_Phone = 0, Cell_Phone = 0, Apt = 0, Zip = 0;
 		
 		String databaseURL = "jdbc:ucanaccess://dbCareerPathways.accdb";
 		try {
-			Connection connect = DriverManager.getConnection(databaseURL);
+			Connection connection = DriverManager.getConnection(databaseURL);
 			System.out.println("Contact Information");
 			System.out.println("School Based Email: ");
 			School_Email = allinputs.nextLine();
@@ -24,15 +27,38 @@ public class chrisybird {
 			Cell_Phone = allinputs.nextInt();
 			System.out.println("Address:");
 			Address = allinputs.nextLine();
+			Address = allinputs.nextLine();
 			System.out.println("Apt:");
 			Apt = allinputs.nextInt();
-			System.out.println("City");
+			System.out.println("City:");
+			City = allinputs.nextLine();
 			City = allinputs.nextLine();
 			System.out.println("State:");
 			State = allinputs.nextLine();
 			System.out.println("Zip Code");
+			
 			Zip = allinputs.nextInt();
 			
+			String sql = "INSERT INTO ContactInfo(School_Email, Perm_Email, Home_Phone, Cell_Phone, Address, Apt, City, State, Zip)  VALUES (? , ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			statement.setString(1,School_Email);
+			statement.setString(2, Perm_Email);
+			statement.setInt(3,Home_Phone);
+			statement.setInt(4, Cell_Phone);
+			statement.setString(5, Address);
+			statement.setInt(6, Apt);
+			statement.setString(7, City);
+			statement.setString(8, State);
+			statement.setInt(9, Zip);
+			
+			int rows = statement.executeUpdate();
+			if (rows >0) {
+				System.out.println("INFO INSERTED");
+				}		
+			connection.close();
+			Melbird.Melbirdjr();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
