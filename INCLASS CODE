@@ -14,8 +14,8 @@ public class StudentTab {
 	public static void main(String[] args) {
 		String databaseURL = "jdbc:ucanaccess://dbCareerPathways.accdb";
 		
-		String Name = null, School = null, Pathway = null, I9_Verified = null, Gender = null, Prefpronoun = null, Prefname = null, Race = null, Exp_Month = null, Ell = null, IEP = null, Allergies = null, Specific_Allergries = null, Languages = null,Environment = null, Access2int= null, intaccess= null, FinanicalMang= null, Direct= null, Bank= null, E_Email= null, ELast_Name= null, EFirst_Name= null,PEmail, ERelationship= null, Relationship= null, Last_Name= null,First_Name = null,State = null,City = null, Address = null, Perm_Email = null, School_Email= null;
-		int Grade_Level = 0, OSIS = 0, SSN = 0,Grade =  0, Exp_Year = 0,ECell_Phone = 0, EWork_Phone = 0 ,EPhone, PCell_Phone= 0,PWork_Phone = 0,Parent_Phone, Zip= 0, Apt = 0, Cell_Phone = 0,Home_Phone  = 0 ;
+		String Name = null, School = null, Pathway = null, I9_Verified = null, Gender = null, Prefpronoun = null, Prefname = null, Race = null, Exp_Month = null, Ell = null, IEP = null, Allergies = null, Specific_Allergries = null, Languages = null,Environment = null, Access2int= null, intaccess= null, FinanicalMang= null, Direct= null, Bank= null, E_Email= null, ELast_Name= null, EFirst_Name= null,PEmail, ERelationship= null, Relationship= null, Last_Name= null,First_Name = null;
+		int Grade_Level = 0, OSIS = 0, SSN = 0,Grade =  0, Exp_Year = 0,ECell_Phone = 0, EWork_Phone = 0 ,EPhone, PCell_Phone= 0,PWork_Phone = 0,Parent_Phone =0;
 		 
 		
 			Connection connection;
@@ -89,15 +89,7 @@ public class StudentTab {
 				statement.setString(17, Allergies);
 				statement.setString(18, Specific_Allergries);
 				statement.setString(19, Languages);
-				statement.setString(20,School_Email);
-				//statement.setString(22, Perm_Email);
-				//statement.setInt(21,Home_Phone);
-				//statement.setInt(22, Cell_Phone);
-				//statement.setString(23, Address);
-				//statement.setInt(24, Apt);
-				//statement.setString(25, City);
-				//statement.setString(26, State);
-				//statement.setInt(27, Zip);
+				
 				int rows = statement.executeUpdate();
 				if (rows >0) {
 					System.out.println("INFO INSERTED");
