@@ -1,1 +1,59 @@
+package Pathways;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Melbird {
+	static PigisBird Pigis = new PigisBird();
+	static Scanner allinputs = new Scanner(System.in);
+	
+	public static void Melbirdjr() {
+		
+		String First = null, Last = null, Relationship = null, Email = null;
+		int HPhone =0, WPhone = 0, CPhone = 0;
+		
+		String databaseURL = "jdbc:ucanaccess://dbCareerPathways.accdb";
+		try {
+			Connection connection = DriverManager.getConnection(databaseURL);
+			System.out.println("Parent Contact Information");
+			System.out.println("First Name");
+			First = allinputs.nextLine();
+			System.out.println("Last Name");
+			Last = allinputs.nextLine();
+			System.out.println("Relationship");
+			Relationship = allinputs.nextLine();
+			System.out.println("Email");
+			Email = allinputs.nextLine();
+			System.out.println("Home Phone");
+			HPhone= allinputs.nextInt();
+			System.out.println("Work Phone");
+			WPhone= allinputs.nextInt();
+			System.out.println("Cell Phone");
+			CPhone= allinputs.nextInt();
+			
+			String sql = "INSERT INTO ParentInfo(First_Name, Last_Name, Relationship, Email, Home_Phone, Work_Phone, Cell_Phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			statement.setString(1,First);
+			statement.setString(2,Last);
+			statement.setString(3,Relationship);
+			statement.setString(4,Email);
+			statement.setInt(5,HPhone);
+			statement.setInt(6,WPhone);
+			statement.setInt(7,CPhone);
+			int rows = statement.executeUpdate();
+			if (rows >0) {
+				System.out.println("INFO INSERTED");
+				}		
+			connection.close();
+			PigisBird.PigisBirdjr();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
