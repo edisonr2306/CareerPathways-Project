@@ -1,0 +1,13 @@
+package Pathways;
+
+import java.util.Scanner;
+
+public class PigisBird {
+
+	static Scanner allinputs = new Scanner(System.in);
+	public static void PigisBirdjr() {
+	System.out.println("Emergency Contact Infomation");
+	System.out.println("");
+	}
+
+}
