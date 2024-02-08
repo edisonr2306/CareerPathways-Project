@@ -1,13 +1,58 @@
-package Pathways;
+package StudentInfo;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
-public class PigisBird {
 
+public class PigisBird {
+	static Smallbird small = new Smallbird();
 	static Scanner allinputs = new Scanner(System.in);
+	
 	public static void PigisBirdjr() {
-	System.out.println("Emergency Contact Infomation");
-	System.out.println("");
+		String FName = null, LName = null, Relationship = null, Email = null ;
+		int Home =0, Cell =0;
+		
+		String databaseURL = "jdbc:ucanaccess://dbCareerPathways.accdb";
+		try {
+			Connection connection = DriverManager.getConnection(databaseURL);
+			
+			System.out.println("Emergency Contact Infomation");
+			System.out.println("First Name");
+			FName = allinputs.nextLine();
+			System.out.println("Last Name");
+			LName= allinputs.nextLine();
+			System.out.println("Relationship");
+			Relationship= allinputs.nextLine();
+			System.out.println("Email");
+			Email = allinputs.nextLine();
+			System.out.println("Home Phone");
+			Home = allinputs.nextInt();
+			System.out.println("Cell Phone");
+			Cell = allinputs.nextInt();
+			
+			String sql = "INSERT INTO EmergencyInfo (First_Name, Last_Name, Relationship, Email, Home_Phone, Cell_Phone) VALUES (?, ?, ?, ?, ?, ?)";
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
+
+			
+			statement.setString(1,FName);
+			statement.setString(2,LName);
+			statement.setString(3,Relationship);
+			statement.setString(4,Email);
+			statement.setInt(5,Home);
+			statement.setInt(6,Cell);
+			int rows = statement.executeUpdate();
+			if (rows >0) {
+				System.out.println("INFO INSERTED");
+				}		
+			connection.close();
+			Smallbird.Smallbirdjr();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
