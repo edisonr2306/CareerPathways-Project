@@ -1,0 +1,52 @@
+package StudentInfo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Smallbird {
+
+	static Scanner allinputs = new Scanner(System.in);
+	
+	public static void Smallbirdjr() {
+	
+		String Bank =null,Direct =null,CFM =null,Deviceacc =null,Intacc =null,Environment =null;
+		String databaseURL = "jdbc:ucanaccess://dbCareerPathways.accdb";
+		try {
+			Connection connection = DriverManager.getConnection(databaseURL);
+			System.out.println("Other Infomation");
+			System.out.println("Do You Currently have a Bank Account?");
+			Bank = allinputs.nextLine();
+			System.out.println("Would you like to be paid through Direct Deposit?");
+			Direct= allinputs.nextLine();
+			System.out.println("Have you completed the Career and Financial Management Course in your school?");
+			CFM= allinputs.nextLine();
+			System.out.println("Do you have access to an electronic device with internet accessibility?");
+			Deviceacc= allinputs.nextLine();
+			System.out.println("Do you have access to the internet?");
+			Intacc= allinputs.nextLine();
+			System.out.println("What internship environment are you looking for?");
+			Environment = allinputs.nextLine();
+			
+			String sql = "INSERT INTO OtherInfo (Bank,Direct, FinanicalMang, intaccess, Access2int, Environment) VALUES (?, ?, ?, ?, ?, ?)";
+			
+      PreparedStatement statement = connection.prepareStatement(sql);
+
+			statement.setString(1,Bank);
+			statement.setString(2,Direct);
+			statement.setString(3,CFM);
+			statement.setString(4,Deviceacc);
+			statement.setString(5,Intacc);
+			statement.setString(6,Environment);
+			int rows = statement.executeUpdate();
+			if (rows >0) {
+				System.out.println("INFO INSERTED");
+				}		
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}
