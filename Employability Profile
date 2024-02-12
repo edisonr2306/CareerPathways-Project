@@ -1,0 +1,29 @@
+package Pathways;
+
+import java.util.Scanner;
+
+public class Applications {
+	static Scanner allinputs = new Scanner(System.in);
+
+	public static void application() {
+		int choose;
+		System.out.println("---------------------");
+		System.out.println("Employability Skills");
+		System.out.println("1-JAVA Applications I- Employability Skills\n2 -Additional Literacy Skills-JAVA Applications I\n 3-Technical Skills-JAVA Applications I");
+		choose = allinputs.nextInt();
+		switch(choose) {
+		case 1:
+			Employability.skills();
+			break;
+		case 2:
+			Literacy.skills();
+			break;
+		case 3:
+			Technical.skills();
+			break;
+		default:
+			System.out.println("Invalid input");
+			break;
+		}
+	}
+}
